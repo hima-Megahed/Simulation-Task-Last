@@ -71,16 +71,27 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.TotlCost_lbl = new System.Windows.Forms.Label();
             this.TotlRepairPerson_lbl = new System.Windows.Forms.Label();
             this.TotlDownCost_lbl = new System.Windows.Forms.Label();
             this.TotlDelayCost_lbl = new System.Windows.Forms.Label();
             this.TotlBearingCost_lbl = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TotlCost_lbl1 = new System.Windows.Forms.Label();
+            this.TotlRepairPerson_lbl1 = new System.Windows.Forms.Label();
+            this.TotlDownCost_lbl1 = new System.Windows.Forms.Label();
+            this.TotlDelayCost_lbl1 = new System.Windows.Forms.Label();
+            this.TotlBearingCost_lbl1 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BearingLife_DGV)).BeginInit();
@@ -90,6 +101,7 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Proposed_DGV)).BeginInit();
             this.tabPage4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,6 +119,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button2);
             this.tabPage3.Controls.Add(this.BearingLife_DGV);
             this.tabPage3.Controls.Add(this.button1);
             this.tabPage3.Controls.Add(this.label9);
@@ -173,7 +186,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(706, 300);
+            this.button1.Location = new System.Drawing.Point(768, 299);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 91;
@@ -444,12 +457,22 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.TotlCost_lbl1);
+            this.groupBox2.Controls.Add(this.TotlBearingCost_lbl1);
+            this.groupBox2.Controls.Add(this.TotlRepairPerson_lbl1);
+            this.groupBox2.Controls.Add(this.label24);
+            this.groupBox2.Controls.Add(this.TotlDownCost_lbl1);
+            this.groupBox2.Controls.Add(this.label23);
+            this.groupBox2.Controls.Add(this.TotlDelayCost_lbl1);
+            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.label21);
+            this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Location = new System.Drawing.Point(435, 16);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(396, 307);
             this.groupBox2.TabIndex = 77;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Current Policy";
+            this.groupBox2.Text = "Proposed Policy";
             // 
             // groupBox1
             // 
@@ -469,51 +492,6 @@
             this.groupBox1.TabIndex = 76;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Current Policy";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 13);
-            this.label2.TabIndex = 77;
-            this.label2.Text = "Total Delay Cost";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 13);
-            this.label1.TabIndex = 76;
-            this.label1.Text = "Total Bearing Cost";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 128);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 13);
-            this.label3.TabIndex = 79;
-            this.label3.Text = "Total RepairPerson Cost";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 98);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 13);
-            this.label4.TabIndex = 78;
-            this.label4.Text = "Total DownTime Cost";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 159);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 13);
-            this.label5.TabIndex = 80;
-            this.label5.Text = "Total Cost ";
             // 
             // TotlCost_lbl
             // 
@@ -560,6 +538,151 @@
             this.TotlBearingCost_lbl.TabIndex = 81;
             this.TotlBearingCost_lbl.Text = "Total Bearing Cost";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 159);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.TabIndex = 80;
+            this.label5.Text = "Total Cost ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(18, 128);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(122, 13);
+            this.label3.TabIndex = 79;
+            this.label3.Text = "Total RepairPerson Cost";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 98);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(109, 13);
+            this.label4.TabIndex = 78;
+            this.label4.Text = "Total DownTime Cost";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(18, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 13);
+            this.label2.TabIndex = 77;
+            this.label2.Text = "Total Delay Cost";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 13);
+            this.label1.TabIndex = 76;
+            this.label1.Text = "Total Bearing Cost";
+            // 
+            // TotlCost_lbl1
+            // 
+            this.TotlCost_lbl1.AutoSize = true;
+            this.TotlCost_lbl1.Location = new System.Drawing.Point(207, 159);
+            this.TotlCost_lbl1.Name = "TotlCost_lbl1";
+            this.TotlCost_lbl1.Size = new System.Drawing.Size(58, 13);
+            this.TotlCost_lbl1.TabIndex = 95;
+            this.TotlCost_lbl1.Text = "Total Cost ";
+            // 
+            // TotlRepairPerson_lbl1
+            // 
+            this.TotlRepairPerson_lbl1.AutoSize = true;
+            this.TotlRepairPerson_lbl1.Location = new System.Drawing.Point(207, 128);
+            this.TotlRepairPerson_lbl1.Name = "TotlRepairPerson_lbl1";
+            this.TotlRepairPerson_lbl1.Size = new System.Drawing.Size(122, 13);
+            this.TotlRepairPerson_lbl1.TabIndex = 94;
+            this.TotlRepairPerson_lbl1.Text = "Total RepairPerson Cost";
+            // 
+            // TotlDownCost_lbl1
+            // 
+            this.TotlDownCost_lbl1.AutoSize = true;
+            this.TotlDownCost_lbl1.Location = new System.Drawing.Point(207, 98);
+            this.TotlDownCost_lbl1.Name = "TotlDownCost_lbl1";
+            this.TotlDownCost_lbl1.Size = new System.Drawing.Size(109, 13);
+            this.TotlDownCost_lbl1.TabIndex = 93;
+            this.TotlDownCost_lbl1.Text = "Total DownTime Cost";
+            // 
+            // TotlDelayCost_lbl1
+            // 
+            this.TotlDelayCost_lbl1.AutoSize = true;
+            this.TotlDelayCost_lbl1.Location = new System.Drawing.Point(207, 62);
+            this.TotlDelayCost_lbl1.Name = "TotlDelayCost_lbl1";
+            this.TotlDelayCost_lbl1.Size = new System.Drawing.Size(85, 13);
+            this.TotlDelayCost_lbl1.TabIndex = 92;
+            this.TotlDelayCost_lbl1.Text = "Total Delay Cost";
+            // 
+            // TotlBearingCost_lbl1
+            // 
+            this.TotlBearingCost_lbl1.AutoSize = true;
+            this.TotlBearingCost_lbl1.Location = new System.Drawing.Point(207, 32);
+            this.TotlBearingCost_lbl1.Name = "TotlBearingCost_lbl1";
+            this.TotlBearingCost_lbl1.Size = new System.Drawing.Size(94, 13);
+            this.TotlBearingCost_lbl1.TabIndex = 91;
+            this.TotlBearingCost_lbl1.Text = "Total Bearing Cost";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(45, 159);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(58, 13);
+            this.label20.TabIndex = 90;
+            this.label20.Text = "Total Cost ";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(45, 128);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(122, 13);
+            this.label21.TabIndex = 89;
+            this.label21.Text = "Total RepairPerson Cost";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(45, 98);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(109, 13);
+            this.label22.TabIndex = 88;
+            this.label22.Text = "Total DownTime Cost";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(45, 62);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(85, 13);
+            this.label23.TabIndex = 87;
+            this.label23.Text = "Total Delay Cost";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(45, 32);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(94, 13);
+            this.label24.TabIndex = 86;
+            this.label24.Text = "Total Bearing Cost";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(625, 299);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 92;
+            this.button2.Text = "Read";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -579,6 +702,8 @@
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Proposed_DGV)).EndInit();
             this.tabPage4.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -639,6 +764,17 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label TotlCost_lbl1;
+        private System.Windows.Forms.Label TotlBearingCost_lbl1;
+        private System.Windows.Forms.Label TotlRepairPerson_lbl1;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label TotlDownCost_lbl1;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label TotlDelayCost_lbl1;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button button2;
     }
 }
 

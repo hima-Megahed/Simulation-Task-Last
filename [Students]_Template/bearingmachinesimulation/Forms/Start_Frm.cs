@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Windows.Forms;
 using BearingMachineModels;
 
@@ -115,7 +116,7 @@ namespace BearingMachineSimulation.Forms
                     _simulationSystem.CurrentSimulationCases[i].RandomDelay.ToString(),
                     _simulationSystem.CurrentSimulationCases[i].Delay.ToString());
             }
-            //Adding Columns
+            
             Proposed_DGV.Columns.Add("column1", "#");
             for (int i = 0; i < _simulationSystem.NumberOfBearings; i++)
             {
@@ -130,22 +131,31 @@ namespace BearingMachineSimulation.Forms
             {
                 
                 DataGridViewRow row = new DataGridViewRow();
-                //row.Cells = Propos;
-                row.Cells[0].Value = i + 1;
+                DataGridViewCell cell = new DataGridViewButtonCell();
+                cell.Value = i + 1;
+                row.Cells.Add(cell);
+                
                 for (int j = 0; j < _simulationSystem.NumberOfBearings; j++)
                 {
-                    row.Cells[j + 1].Value =
-                        _simulationSystem.ProposedSimulationCases[i].Bearings[j].Hours;
-                }
-                row.Cells[_simulationSystem.NumberOfBearings + 2].Value =
-                    _simulationSystem.ProposedSimulationCases[i].FirstFailure;
-                row.Cells[_simulationSystem.NumberOfBearings + 3].Value =
-                    _simulationSystem.ProposedSimulationCases[i].AccumulatedHours;
-                row.Cells[_simulationSystem.NumberOfBearings + 4].Value =
-                    _simulationSystem.ProposedSimulationCases[i].RandomDelay;
-                row.Cells[_simulationSystem.NumberOfBearings + 5].Value =
-                    _simulationSystem.ProposedSimulationCases[i].Delay;
+                    cell = new DataGridViewButtonCell();
+                    cell.Value = _simulationSystem.ProposedSimulationCases[i].Bearings[j].Hours;
+                    row.Cells.Add(cell);
 
+                }
+
+                cell = new DataGridViewButtonCell();
+                cell.Value = _simulationSystem.ProposedSimulationCases[i].FirstFailure;
+                row.Cells.Add(cell);
+                cell = new DataGridViewButtonCell();
+                cell.Value = _simulationSystem.ProposedSimulationCases[i].AccumulatedHours;
+                row.Cells.Add(cell);
+                cell = new DataGridViewButtonCell();
+                cell.Value = _simulationSystem.ProposedSimulationCases[i].RandomDelay;
+                row.Cells.Add(cell);
+                cell = new DataGridViewButtonCell();
+                cell.Value = _simulationSystem.ProposedSimulationCases[i].Delay;
+                row.Cells.Add(cell);
+                
                 Proposed_DGV.Rows.Add(row);
             }
         }
@@ -184,13 +194,15 @@ namespace BearingMachineSimulation.Forms
             currentPerformanceMeasures.DowntimeCost =
                 _simulationSystem.CurrentSimulationCases.Count * _simulationSystem.RepairTimeForOneBearing *
                 _simulationSystem.DowntimeCost;
+            decimal val = Convert.ToDecimal(_simulationSystem.RepairPersonCost) / 60;
             currentPerformanceMeasures.RepairPersonCost = _simulationSystem.CurrentSimulationCases.Count *
-                                                          _simulationSystem.RepairTimeForOneBearing *
-                                                          Convert.ToDecimal(_simulationSystem.RepairPersonCost / 60);
+                                                          _simulationSystem.RepairTimeForOneBearing * val;
+                                                         
             currentPerformanceMeasures.TotalCost = currentPerformanceMeasures.BearingCost +
                                                    currentPerformanceMeasures.DelayCost +
                                                    currentPerformanceMeasures.DowntimeCost +
                                                    currentPerformanceMeasures.RepairPersonCost;
+            _simulationSystem.CurrentPerformanceMeasures = currentPerformanceMeasures;
             TotlBearingCost_lbl.Text = currentPerformanceMeasures.BearingCost.ToString(CultureInfo.CurrentCulture);
             TotlCost_lbl.Text = currentPerformanceMeasures.TotalCost.ToString(CultureInfo.CurrentCulture);
             TotlDelayCost_lbl.Text = currentPerformanceMeasures.DelayCost.ToString(CultureInfo.CurrentCulture);
@@ -236,11 +248,20 @@ namespace BearingMachineSimulation.Forms
                                     _simulationSystem.DowntimeCost;
             tmpMeasures.DowntimeCost = _simulationSystem.ProposedSimulationCases.Count *
                                        _simulationSystem.RepairTimeForAllBearings * _simulationSystem.DowntimeCost;
+            Decimal val = Convert.ToDecimal(_simulationSystem.RepairPersonCost) / 60;
             tmpMeasures.RepairPersonCost = _simulationSystem.ProposedSimulationCases.Count *
-                                       _simulationSystem.RepairTimeForAllBearings * Convert.ToDecimal(_simulationSystem.RepairPersonCost / 60);
+                                           _simulationSystem.RepairTimeForAllBearings * val;
             tmpMeasures.TotalCost = tmpMeasures.BearingCost + tmpMeasures.DelayCost + tmpMeasures.DowntimeCost +
                                     tmpMeasures.RepairPersonCost;
             _simulationSystem.ProposedPerformanceMeasures = tmpMeasures;
+
+            TotlBearingCost_lbl1.Text = tmpMeasures.BearingCost.ToString(CultureInfo.CurrentCulture);
+            TotlDelayCost_lbl1.Text = tmpMeasures.DelayCost.ToString(CultureInfo.CurrentCulture);
+            TotlDownCost_lbl1.Text = tmpMeasures.DowntimeCost.ToString(CultureInfo.CurrentCulture);
+            TotlRepairPerson_lbl1.Text = tmpMeasures.RepairPersonCost.ToString(CultureInfo.CurrentCulture);
+            TotlCost_lbl1.Text = tmpMeasures.TotalCost.ToString(CultureInfo.CurrentCulture);
+
+
         }
         private int Get_Delay_Accmulated()
         {
@@ -309,6 +330,77 @@ namespace BearingMachineSimulation.Forms
                 sum += _case.Delay;
             }
             return sum;
+        }
+
+        private void Process()
+        {
+            var streamReader = new StreamReader(@"C:\Users\Ibrahim Hasan\Desktop\[Students]_Template\bearingmachinesimulation\TestCases\TestCase1.txt");
+            string tempLine;
+            List<string> linesList = new List<string>();
+
+            while ((tempLine = streamReader.ReadLine()) != null)
+            {
+                linesList.Add(tempLine);
+            }
+
+            ///////////////
+            for (var i = 0; i < linesList.Count; i++)
+            {
+                if (linesList[i].Contains("DowntimeCost"))
+                {
+                    DownTime_txt.Text = linesList[++i];
+                }
+                else if (linesList[i].Contains("RepairPersonCost"))
+                {
+                    RepairPersonCost_txt.Text = linesList[++i];
+                }
+                else if (linesList[i].Contains("BearingCost"))
+                {
+                    BearsCost_txt.Text = linesList[++i];
+                }
+                else if (linesList[i].Contains("NumberOfHours"))
+                {
+                    NumHours_txt.Text = linesList[++i];
+                }
+                else if (linesList[i].Contains("NumberOfBearings")) 
+                {
+                    NumBears_txt.Text = linesList[++i];
+                }
+                else if (linesList[i].Contains("RepairTimeForOneBearing"))
+                {
+                    RepairTime_txt.Text = linesList[++i];
+                }
+                else if (linesList[i].Contains("RepairTimeForAllBearings"))
+                {
+                    RepairTimeAll_txt.Text = linesList[++i];
+                }
+                else if (linesList[i].Contains("DelayTimeDistribution"))
+                {
+                    i++;
+                    while (linesList[i].Contains(","))
+                    {
+                        string[] split = linesList[i].Replace(" ", "").Split(',');
+                        DelayTime_DGV.Rows.Add(split[0], split[1], "", "");
+                        i++;
+                    }
+                    
+                    
+                }
+                else if (linesList[i].Contains("BearingLifeDistribution"))
+                {
+                    while (i < linesList.Count -1)
+                    {
+                        string[] split = linesList[++i].Replace(" ", "").Split(',');
+                        BearingLife_DGV.Rows.Add(split[0], split[1], "", "");
+                    }
+                }
+            }
+            streamReader.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Process();
         }
     }
 }
